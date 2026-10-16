@@ -55,4 +55,21 @@ SELECT
 FROM v_amazon_sales_cleaned
 GROUP BY category
 ORDER BY avg_discount_percentage DESC
+
+
+Querry to find top 3 categories with more than 50 products
+
+SELECT 
+    category,
+    COUNT(*) AS total_products,
+    ROUND(AVG(clean_discount_pct), 2) AS avg_discount_percentage,
+    ROUND(AVG(clean_discounted_price), 2) AS avg_sale_price
+FROM v_amazon_sales_cleaned
+GROUP BY category
+HAVING COUNT(*) > 50
+ORDER BY avg_discount_percentage DESC
+LIMIT 3;
+
+
+    
 LIMIT 5;
